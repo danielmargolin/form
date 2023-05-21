@@ -1,23 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+
+import "./App.css";
+
+import Form from "./components/Form/Form";
+import FormField from "./components/FormField/FormField";
 
 function App() {
+  const [formState, setFormState] = useState({ name: "daniel" });
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Form state={formState} onChange={setFormState}>
+        <div>
+        <FormField
+          type="input"
+          path="name"
+        />
+        </div>
+        <div>
+        <FormField
+          type="checkbox"
+          path="isActive"
+        />
+        </div>
+      </Form>
     </div>
   );
 }
