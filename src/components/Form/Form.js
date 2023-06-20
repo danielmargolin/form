@@ -1,13 +1,7 @@
-import { createContext } from "react";
-
-export const FormContext = createContext({});
+import css from "./Form.module.css";
 
 const Form = ({ state, onChange, children }) => {
-  return (
-    <FormContext.Provider value={{state, onChange}}>
-      {children}
-    </FormContext.Provider>
-  );
+  return <div className={css["container"]}>{children}</div>;
 };
 
 export default Form;

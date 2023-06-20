@@ -1,21 +1,22 @@
-import { useContext } from "react";
+import css from "./FormField.module.css";
 
-import Input from "../Input";
-import Checkbox from "../Checkbox/Checkbox";
-import {FormContext} from '../Form/Form'
+import Input from "../common/Input";
+import Checkbox from "../common/Checkbox";
 
 const COMPONENTS_MAP = { input: Input, checkbox: Checkbox };
 
-const FormField = ({ type, path }) => {
-  const {state, onChange} = useContext(FormContext)
+const FormField = ({ label, type, path }) => {
 
   const Component = COMPONENTS_MAP[type];
 
-  const onFieldChange = (value) => {
-    onChange({ ...state, [path]: value });
-  };
-
-  return <Component value={state[path]} onChange={onFieldChange} />;
+  return (
+    <div>
+      <label className={css["label"]}>{label}:</label>
+      <div className={css["form-field-container"]}>
+        <Component />
+      </div>
+    </div>
+  );
 };
 
 export default FormField;

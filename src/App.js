@@ -6,22 +6,16 @@ import Form from "./components/Form/Form";
 import FormField from "./components/FormField/FormField";
 
 function App() {
-  const [formState, setFormState] = useState({ name: "daniel" });
+  const [formState, setFormState] = useState({
+    name: "Daniel",
+    lastName: "Margolin",
+  });
   return (
     <div>
       <Form state={formState} onChange={setFormState}>
-        <div>
-        <FormField
-          type="input"
-          path="name"
-        />
-        </div>
-        <div>
-        <FormField
-          type="checkbox"
-          path="isActive"
-        />
-        </div>
+        <FormField label="Name" type="input" path="name" />
+        <FormField label="Last Name" type="input" path="lastName" />
+        <FormField label="Is Developer" type="checkbox" path="isDev" />
       </Form>
     </div>
   );
